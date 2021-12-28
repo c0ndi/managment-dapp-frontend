@@ -7,6 +7,9 @@ import { isEthBrowser } from '../../utils/isEthBrowser';
 
 function WelcomePage() {
 	const dispatch = useDispatch();
+
+	isEthBrowser();
+
 	const connectToMetamask = async () => {
 		if (typeof window.ethereum !== 'undefined') {
 			const accounts = await window.ethereum.request({
@@ -17,8 +20,6 @@ function WelcomePage() {
 			console.log('Please install Metamask');
 		}
 	};
-
-	isEthBrowser();
 
 	return (
 		<div className={styles.wrapper}>

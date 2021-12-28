@@ -3,8 +3,11 @@ import styles from './index.module.scss';
 import { useSelector } from 'react-redux';
 import { isEthBrowser } from '../../utils/isEthBrowser';
 import Contract from '../../utils/contract';
+import isConnected from '../../utils/isConnected';
 
 function Register() {
+	isConnected();
+
 	const [formData, setFormData] = useState<any>({
 		fullName: '',
 		age: 0,
@@ -17,9 +20,13 @@ function Register() {
 	const account = useSelector<any>(
 		(state) => state.account.account
 	);
-	const contract = Contract();
+
+	const metamaskConnection = useSelector<any>(
+		(state) => state.account.account
+	);
 
 	function register(e: Event) {
+		const contract = Contract();
 		e.preventDefault();
 		contract.methods
 			.register(
@@ -76,8 +83,12 @@ function Register() {
 						})
 					}
 				>
-					<option value='electric'>Elektryk</option>
-					<option value='logistic'>Logistic</option>
+					<option value='electric'>
+						Elektryk
+					</option>
+					<option value='logistic'>
+						Logistic
+					</option>
 					<option value='frontend'>
 						Frontend developer
 					</option>

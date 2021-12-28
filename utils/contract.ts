@@ -1,6 +1,6 @@
 declare let window: any;
 import abi from '../abi/abi.json';
-import { contractAddress } from '../utils/contractAddress';
+import { contractAddress } from './contractAddress';
 
 function Contract() {
 	const web3 = window.web3;

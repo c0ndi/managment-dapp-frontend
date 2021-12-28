@@ -6,10 +6,11 @@ import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
 import { isEthBrowser } from '../utils/isEthBrowser';
 import Contract from '../utils/contract';
+import Router from 'next/router';
 
 const Home: NextPage = () => {
 	const [isRegister, setIsRegister] =
-		useState<boolean>(false);
+		useState<boolean>(true);
 
 	const metamaskConnection = useSelector<any>(
 		(state) => state.account.metamaskConnection
@@ -23,19 +24,24 @@ const Home: NextPage = () => {
 
 	useEffect(() => {
 		const contract = Contract();
-
 		if (metamaskConnection) {
 			contract.methods
 				.getIsRegistered()
 				.call({
 					from: account,
 				})
-				.then((result: any) => {
+				.then((result: boolean) => {
 					setIsRegister(result);
+				})
+				.then(() => {
+					if (isRegister) {
+						Router.push('/panel');
+					} else {
+						Router.push('/register');
+					}
 				});
 		}
 	});
-
 	return (
 		<div>
 			<Head>
@@ -46,13 +52,7 @@ const Home: NextPage = () => {
 				/>
 			</Head>
 			<main>
-				{!metamaskConnection ? (
-					<WelcomePage />
-				) : isRegister ? (
-					<p>siema</p>
-				) : (
-					<Register />
-				)}
+				<WelcomePage />
 			</main>
 		</div>
 	);
