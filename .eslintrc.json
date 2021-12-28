@@ -1,3 +1,22 @@
 {
-  "extends": "next/core-web-vitals"
+	"extends": [
+		"next/core-web-vitals",
+		"plugin:@typescript-eslint/recommended",
+		"prettier"
+	],
+	"plugins": ["prettier"],
+	"rules": {
+		"prefer-const": "error",
+		"@typescript-eslint/no-unused-vars": "error",
+		"@typescript-eslint/no-explicit-any": "error",
+		"semi": [2, "always"],
+		"react/jsx-first-prop-new-line": [2, "multiline"],
+		"react/jsx-max-props-per-line": [
+			2,
+			{ "maximum": 1, "when": "multiline" }
+		],
+		"react/jsx-indent-props": [2, 2],
+		"react/jsx-closing-bracket-location": [2, "tag-aligned"]
+	},
+	"eslint.validate": ["typescript", "javascript"]
 }
