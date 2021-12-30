@@ -1,6 +1,5 @@
 declare let window: any;
 
-import styles from './index.module.scss';
 import { useDispatch } from 'react-redux';
 import { setAccount } from '../../redux/account';
 import { isEthBrowser } from '../../utils/isEthBrowser';
@@ -22,12 +21,8 @@ function WelcomePage() {
 	};
 
 	return (
-		<div className={styles.wrapper}>
-			<p className={styles.header}></p>
-			<button
-				className={styles.connectBtn}
-				onClick={connectToMetamask}
-			>
+		<div>
+			<button onClick={connectToMetamask}>
 				Connect
 			</button>
 		</div>

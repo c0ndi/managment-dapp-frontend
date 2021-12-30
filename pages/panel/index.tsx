@@ -1,10 +1,11 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Router from 'next/router';
+import LoadingScreen from '../../components/loadingScreen';
 import isConnected from '../../utils/isConnected';
 
 const Home: NextPage = () => {
-	isConnected();
+	// isConnected();
 
 	return (
 		<div>
@@ -16,7 +17,7 @@ const Home: NextPage = () => {
 				/>
 			</Head>
 			<main>
-				<p>zarejstrowany</p>
+				<LoadingScreen />
 			</main>
 		</div>
 	);

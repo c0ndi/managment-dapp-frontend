@@ -3,4 +3,9 @@ export interface AccountOptions {
 	metamaskConnection: boolean;
 }
 
-//todo all interfaces
+export interface FormData {
+	fullName: String;
+	age: Number;
+	gender: String;
+	jobType: String;
+}
