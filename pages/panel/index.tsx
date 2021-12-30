@@ -1,12 +1,30 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import Router from 'next/router';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 import LoadingScreen from '../../components/loadingScreen';
+import MainPanel from '../../components/mainPanel';
 import isConnected from '../../utils/isConnected';
+import { isEthBrowser } from '../../utils/isEthBrowser';
 
 const Home: NextPage = () => {
-	// isConnected();
+	const [active, setActive] = useState(true);
 
+	const metamaskConnection = useSelector<any>(
+		(state: any) => state.account.metamaskConnection
+	);
+
+	isEthBrowser();
+
+	useEffect(() => {
+		setTimeout(() => {
+			setActive(!active);
+		}, 1000);
+		if (!metamaskConnection) {
+			Router.push('/');
+		}
+	}, []);
 	return (
 		<div>
 			<Head>
@@ -17,7 +35,7 @@ const Home: NextPage = () => {
 				/>
 			</Head>
 			<main>
-				<LoadingScreen />
+				{active ? <LoadingScreen /> : <MainPanel />}
 			</main>
 		</div>
 	);

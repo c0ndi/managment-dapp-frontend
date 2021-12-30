@@ -4,6 +4,7 @@ import { isEthBrowser } from '../../utils/isEthBrowser';
 import Contract from '../../utils/contract';
 import isConnected from '../../utils/isConnected';
 import { FormData } from '../../types/Interfaces';
+import Router from 'next/router';
 import {
 	FormControl,
 	TextField,
@@ -13,7 +14,6 @@ import {
 	InputLabel,
 	Button,
 } from '@mui/material';
-import SendIcon from '@mui/icons-material/Send';
 
 function Register() {
 	const [formData, setFormData] = useState<FormData>({
@@ -40,6 +40,9 @@ function Register() {
 			.send({
 				from: account,
 				gas: 3000000,
+			})
+			.then(() => {
+				Router.push('/panel');
 			});
 	}
 	return (
@@ -146,12 +149,11 @@ function Register() {
 					</Select>
 				</FormControl>
 				<Button
+					variant='contained'
 					sx={{
 						width: '200px',
 						alignSelf: 'flex-end',
 					}}
-					variant='contained'
-					endIcon={<SendIcon />}
 					onClick={register}
 				>
 					Sign up

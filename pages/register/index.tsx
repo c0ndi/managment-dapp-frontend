@@ -10,21 +10,22 @@ import isConnected from '../../utils/isConnected';
 import { isEthBrowser } from '../../utils/isEthBrowser';
 
 const Home: NextPage = () => {
-	const [active, setActive] = useState(false);
+	const [active, setActive] = useState(true);
 
 	const metamaskConnection = useSelector<any>(
 		(state: any) => state.account.metamaskConnection
 	);
 
 	isEthBrowser();
-	// useEffect(() => {
-	// 	setTimeout(() => {
-	// 		setActive(!active);
-	// 	}, 500);
-	// 	if (!metamaskConnection) {
-	// 		Router.push('/');
-	// 	}
-	// }, []);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setActive(!active);
+		}, 1000);
+		if (!metamaskConnection) {
+			Router.push('/');
+		}
+	}, []);
 	return (
 		<div>
 			<Head>
