@@ -11,6 +11,5 @@
 	"arrow": "parens-new-line",
 	"condition": "parens-new-line",
 	"logical": "ignore",
-	"prop": "ignore",
-	"printWidth": 60
+	"prop": "ignore"
 }

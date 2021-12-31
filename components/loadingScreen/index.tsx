@@ -1,4 +1,5 @@
 import styles from './index.module.scss';
+import { LoadingScreenProps } from '../../types/Interfaces';
 
 function LoadingScreen() {
 	return (

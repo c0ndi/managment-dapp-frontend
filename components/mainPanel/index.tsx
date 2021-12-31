@@ -1,8 +1,12 @@
 import { Button } from '@mui/material';
 import { Box } from '@mui/system';
-import { useSelector } from 'react-redux';
+import Link from 'next/link';
+import Router from 'next/router';
+import { useDispatch, useSelector } from 'react-redux';
+import { setAccount } from '../../redux/account';
 
 function MainPanel() {
+	const dispatch = useDispatch();
 	const account = useSelector<any>(
 		(state) => state.account.account
 	);
@@ -11,6 +15,11 @@ function MainPanel() {
 		String(account).slice(0, 3) +
 		'....' +
 		String(account).slice(-4);
+
+	const disconnectMetamask = async () => {
+		location.reload();
+		Router.push('/');
+	};
 	return (
 		<Box
 			sx={{
@@ -52,20 +61,30 @@ function MainPanel() {
 					variant='contained'
 					sx={{ height: '42px' }}
 				>
-					<Link to='/pending-workers'>
+					<Link href='/pending-workers'>
 						Pending workers
 					</Link>
-					{/* workers - page */}
 				</Button>
 				<Button
 					variant='contained'
 					sx={{ height: '42px' }}
 				>
-					<Link to='/workers'>Workers</Link>
-					{/* pending workers - page */}
-				</Button>
+					<Link href='/workers'>Workers</Link>
 				</Button>
 			</Box>
+			<Button
+				variant='outlined'
+				color='error'
+				sx={{
+					height: '42px',
+					position: 'absolute',
+					top: '7.5%',
+					right: '10%',
+				}}
+				onClick={disconnectMetamask}
+			>
+				Disconnect
+			</Button>
 		</Box>
 	);
 }

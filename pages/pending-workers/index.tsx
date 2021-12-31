@@ -2,10 +2,9 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Router from 'next/router';
 import { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import LoadingScreen from '../../components/loadingScreen';
-import MainPanel from '../../components/mainPanel';
-import isConnected from '../../utils/isConnected';
+import PendingWorkersPanel from '../../components/pendingWorkersPanel';
 import { isEthBrowser } from '../../utils/isEthBrowser';
 
 const Home: NextPage = () => {
@@ -35,7 +34,11 @@ const Home: NextPage = () => {
 				/>
 			</Head>
 			<main>
-				{active ? <LoadingScreen /> : <MainPanel />}
+				{active ? (
+					<LoadingScreen />
+				) : (
+					<PendingWorkersPanel />
+				)}
 			</main>
 		</div>
 	);

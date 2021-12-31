@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import LoadingScreen from '../../components/loadingScreen';
 import MainPanel from '../../components/mainPanel';
+import WorkersPanel from '../../components/workersPanel';
 import isConnected from '../../utils/isConnected';
 import { isEthBrowser } from '../../utils/isEthBrowser';
 
@@ -35,7 +36,11 @@ const Home: NextPage = () => {
 				/>
 			</Head>
 			<main>
-				{active ? <LoadingScreen /> : <MainPanel />}
+				{active ? (
+					<LoadingScreen />
+				) : (
+					<WorkersPanel />
+				)}
 			</main>
 		</div>
 	);

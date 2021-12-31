@@ -7,11 +7,9 @@ import { useState, useEffect } from 'react';
 import { isEthBrowser } from '../utils/isEthBrowser';
 import Contract from '../utils/contract';
 import Router from 'next/router';
+import LoadingScreen from '../components/loadingScreen';
 
 const Home: NextPage = () => {
-	const [isRegister, setIsRegister] =
-		useState<boolean>(true);
-
 	const metamaskConnection = useSelector<any>(
 		(state) => state.account.metamaskConnection
 	);
@@ -31,7 +29,6 @@ const Home: NextPage = () => {
 					from: account,
 				})
 				.then((result: boolean) => {
-					setIsRegister(result);
 					if (result) {
 						Router.push('/panel');
 					} else {

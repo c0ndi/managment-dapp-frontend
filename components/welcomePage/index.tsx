@@ -27,8 +27,8 @@ function WelcomePage() {
 				display: 'flex',
 				alignItems: 'center',
 				flexDirection: 'column',
-				height: '100vh',
-				p: '12.5% 7.5%',
+				height: '90vh',
+				justifyContent: 'center',
 			}}
 		>
 			<Box
